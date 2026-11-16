@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Game Xếp Hình - C4E</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col items-center justify-center p-6">
+
+    <div class="bg-white border border-gray-200 shadow-sm rounded-lg p-10 max-w-5xl w-full flex flex-col items-center relative">
+        
+        <!-- Nút bấm bắt đầu -->
+        <div class="mb-8">
+            <button id="btnChoi" onclick="xuLyNutChoi()" class="px-8 py-2.5 rounded font-medium text-white bg-green-500 hover:bg-green-600 shadow-sm transition">
+                Bắt đầu
+            </button>
+        </div>
+
+        <!-- Khung chính -->
+        <div class="flex flex-col lg:flex-row gap-8 items-start justify-center w-full">
+            
+            <!-- Bàn cờ game -->
+            <div id="banCo" class="grid grid-cols-4 gap-4 bg-white p-6 rounded-lg border border-gray-200 shadow-sm w-[580px]">
+                <!-- Các ô số render bằng JS -->
+            </div>
+
+            <!-- Cột bên phải: Đồng hồ và hướng dẫn -->
+            <div class="flex flex-col gap-6 w-full lg:w-52">
+                <!-- Đồng hồ -->
+                <div class="bg-green-100 text-green-700 rounded-lg p-4 text-center border border-green-200 shadow-sm">
+                    <div class="text-xs font-bold text-green-800 mb-1">Đồng Hồ</div>
+                    <div id="hienThiGio" class="text-3xl font-bold tracking-wide">00:00</div>
+                </div>
+
+                <!-- Hướng dẫn -->
+                <div class="bg-white rounded-lg p-4 border border-gray-200 shadow-sm text-center">
+                    <div class="text-xs font-bold text-gray-700 mb-4">Hướng Dẫn Di Chuyển</div>
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="flex">
+                            <span class="phim-huong">↑</span>
+                        </div>
+                        <div class="flex gap-1.5">
+                            <span class="phim-huong">←</span>
+                            <span class="phim-huong">↓</span>
+                            <span class="phim-huong">→</span>
+                        </div>
+                        <div class="mt-4 flex flex-col items-center gap-1.5 w-full">
+                            <span class="phim-huong-sm">W</span>
+                            <div class="flex gap-1.5">
+                                <span class="phim-huong-sm">A</span>
+                                <span class="phim-huong-sm">S</span>
+                                <span class="phim-huong-sm">D</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bảng lịch sử -->
+        <div class="mt-10 w-full">
+            <div class="bg-white rounded-lg border border-gray-200 p-4 shadow-sm">
+                <h3 class="text-center font-bold text-gray-800 mb-3 text-sm">Lịch Sử Lượt Chơi</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-gray-100 text-gray-700 text-xs font-semibold">
+                                <th class="p-3 border-b border-gray-200 w-20 text-center">#</th>
+                                <th class="p-3 border-b border-gray-200">Bước đi</th>
+                                <th class="p-3 border-b border-gray-200">Thời gian</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bangLichSu" class="text-sm text-gray-600">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal thông báo thắng -->
+    <div id="khungThang" class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-xl p-8 max-w-sm w-full text-center shadow-xl">
+            <h2 class="text-2xl font-bold text-green-600 mb-2">YOU WIN! 🎉</h2>
+            <p id="thongBaoKetQua" class="text-gray-600 mb-6 text-sm">Bạn đã hoàn thành trò chơi!</p>
+            <button onclick="dongModal()" class="px-6 py-2 bg-green-500 text-white font-medium rounded hover:bg-green-600 shadow">
+                Chơi lại
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
